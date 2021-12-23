@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>进制器</title>
+<style type="text/css">
+input {
+	border: #ff8080 solid 5px;
+	height: 60px;
+	color: #ff8080;
+	text-align: center;
+}
+
+td {
+	border: #ff8080 solid 5px;
+	width: 90px;
+	height: 60px;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+	function $(id) {//id选择器
+		return document.getElementById(id);
+	}
+	function countsum(td) {
+		var num = td.innerText;
+		var tvalue = $("txt").value;
+
+		if (num == "2-10") {
+			tvalue = parseInt(tvalue, 2);//2.8.16转10进制
+		} else if (num == "8-10") {
+			tvalue = parseInt(tvalue, 8);
+		} else if (num == "16-10") {
+			tvalue = parseInt(tvalue, 16);
+
+		} else if (num == "10-2") {
+			tvalue = (1 * tvalue).toString(2);//10进制转2.8.16
+			$("hiddenv").innerText="16 8 4 2 1";
+		} else if (num == "10-8") {
+			tvalue = (1 * tvalue).toString(8);
+		} else if (num == "10-16") {
+			tvalue = (1 * tvalue).toString(16);
+		}
+
+		else if (num == "8-2") {
+			tvalue = parseInt(tvalue, 8).toString(2);//先转八进制数 再转二进制
+		} else if (num == "16-2") {
+			tvalue = parseInt(tvalue, 16).toString(2);
+		}
+
+		else if (num == "2-8") {
+			tvalue = parseInt(tvalue, 2).toString(8);
+		} else if (num == "16-8") {
+			tvalue = parseInt(tvalue, 16).toString(8);
+		}
+
+		else if (num == "2-16") {
+			tvalue = parseInt(tvalue, 2).toString(16);
+		} else if (num == "8-16") {
+			tvalue = parseInt(tvalue, 8).toString(16);
+		}
+
+		$("txt").value = tvalue;
+	}
+</script>
+</head>
+<body>
+<body background="img/01.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+<span id="hiddenv" style="position: absolute;color: red;"></span>
+
+	<div align="center" style="margin--p: 15px;">
+		<input type="text" id="txt" size="40">
+	</div>
+	<table align="center">
+
+		<tr>
+			<td onclick="countsum(this)">8-2</td>
+			<td onclick="countsum(this)">10-2</td>
+			<td onclick="countsum(this)">16-2</td>
+		</tr>
+
+		<tr>
+			<td onclick="countsum(this)">2-8</td>
+			<td onclick="countsum(this)">10-8</td>
+			<td onclick="countsum(this)">16-8</td>
+		</tr>
+
+		<tr>
+			<td onclick="countsum(this)">2-10</td>
+			<td onclick="countsum(this)">8-10</td>
+			<td onclick="countsum(this)">16-10</td>
+		</tr>
+
+		<tr>
+			<td onclick="countsum(this)">2-16</td>
+			<td onclick="countsum(this)">8-16</td>
+			<td onclick="countsum(this)">10-16</td>
+		</tr>
+	</table>
+</body>
+</html>
